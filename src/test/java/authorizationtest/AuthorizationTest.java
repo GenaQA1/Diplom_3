@@ -1,7 +1,7 @@
 package authorizationtest;
 
 import api.apiauthuser.ApiAuthUser;
-import api.apicreateuser.ApiCreateUser;
+import api.apicreateuser.ApiUserClient;
 import basetest.BaseTest;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -9,29 +9,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static staticvalues.StaticValues.URL_BASE;
+import static datauser.DataUser.EMAIL_USER;
+import static datauser.DataUser.PASSWORD_USER;
+import static urls.URLs.URL_BASE;
 
 public class AuthorizationTest extends BaseTest {
 
-
-    public AuthorizationTest() throws InterruptedException {
-    }
-
-    ApiCreateUser createUser = new ApiCreateUser();
+    ApiUserClient createUser = new ApiUserClient();
     ApiAuthUser authUser = new ApiAuthUser();
 
     @Before
     public void setUp(){
         driver.get(URL_BASE);
         RestAssured.baseURI = URL_BASE;
-        createUser.deleteUser(authUser.responseAuthUser(createUser.getCorrectUser()));
-        createUser.responseCreateUsers(createUser.getCorrectUser());
+        createUser.userClient(createUser.getCorrectUser());
     }
 
     @After
     public void setDown(){
-        createUser.deleteUser(authUser.responseAuthUser(createUser.getCorrectUser()));
-        createUser.deleteUser(authUser.responseAuthUser(createUser.getIncorrectUserPassword()));
+        createUser.deleteUser(authUser.authUser(createUser.getCorrectUser()));
+        createUser.deleteUser(authUser.authUser(createUser.getIncorrectUserPassword()));
     }
 
 
@@ -51,8 +48,8 @@ public class AuthorizationTest extends BaseTest {
     @DisplayName("login via the 'Personal Account' button")
     public void authorizationByButtonLoginUserPageHome() throws InterruptedException {
         homePage.clickButtonAccountUser();
-        loginPage.sendTextFieldEmail("gena.chebotar@mail.ru");
-        loginPage.sendTextFieldPassword("GoLittleRockStar");
+        loginPage.sendTextFieldEmail(EMAIL_USER);
+        loginPage.sendTextFieldPassword(PASSWORD_USER);
         loginPage.clickButtonAcceptLogin();
         homePage.checkButtonCreateOrder();
         homePage.clickButtonAccountUser();
@@ -65,8 +62,8 @@ public class AuthorizationTest extends BaseTest {
         homePage.clickButtonAccountUser();
         loginPage.clickBtnRegistration();
         registrationPage.clickButtonEntrance();
-        loginPage.sendTextFieldEmail("gena.chebotar@mail.ru");
-        loginPage.sendTextFieldPassword("GoLittleRockStar");
+        loginPage.sendTextFieldEmail(EMAIL_USER);
+        loginPage.sendTextFieldPassword(PASSWORD_USER);
         loginPage.clickButtonAcceptLogin();
         homePage.checkButtonCreateOrder();
         homePage.clickButtonAccountUser();
@@ -79,8 +76,8 @@ public class AuthorizationTest extends BaseTest {
         homePage.clickButtonAccountUser();
         loginPage.clickButtonRecoveryPassword();
         recoveryPasswordPage.clickButtonEntrance();
-        loginPage.sendTextFieldEmail("gena.chebotar@mail.ru");
-        loginPage.sendTextFieldPassword("GoLittleRockStar");
+        loginPage.sendTextFieldEmail(EMAIL_USER);
+        loginPage.sendTextFieldPassword(PASSWORD_USER);
         loginPage.clickButtonAcceptLogin();
         homePage.checkButtonCreateOrder();
         homePage.clickButtonAccountUser();

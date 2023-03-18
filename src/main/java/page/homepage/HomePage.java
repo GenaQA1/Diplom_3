@@ -37,28 +37,28 @@ public class HomePage extends BasePage {
 
 
     public void clickButtonLogInAccount() throws InterruptedException {
-        Thread.sleep(500);
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(buttonLogInAccount));
         driver.findElement(buttonLogInAccount).click();
     }
 
     public void checkButtonCreateOrder() throws InterruptedException {
-        Thread.sleep(500);
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(buttonCreateOrder));
         String buttonOrder = driver.findElement(buttonCreateOrder).getText();
         Assert.assertEquals("Оформить заказ",buttonOrder);
     }
 
     public void clickButtonAccountUser() throws InterruptedException {
-        Thread.sleep(500);
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(buttonAccountUser));
         driver.findElement(buttonAccountUser).click();
     }
 
     public void clickLogoHomePage() throws InterruptedException {
-        Thread.sleep(500);
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(logoHomePage));
         driver.findElement(logoHomePage).click();
     }
 
     public void clickButtonConstructor() throws InterruptedException {
-        Thread.sleep(500);
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(buttonConstructor));
         driver.findElement(buttonConstructor).click();
     }
 
@@ -69,11 +69,13 @@ public class HomePage extends BasePage {
 
     public void clickButtonToppingSauce() throws InterruptedException {
         Thread.sleep(500);
+
         driver.findElement(buttonToppingSauce).click();
     }
 
     public void clickButtonToppinFillings() throws InterruptedException {
         Thread.sleep(500);
+
         driver.findElement(buttonToppingFillings).click();
     }
 

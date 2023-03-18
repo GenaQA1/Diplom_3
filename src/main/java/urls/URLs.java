@@ -1,6 +1,6 @@
-package staticvalues;
+package urls;
 
-public class StaticValues {
+public class URLs {
 
     public static String API_REGISTR = "/api/auth/register";
     public static String API_DELITE = "/api/auth/user";

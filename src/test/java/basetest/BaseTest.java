@@ -19,6 +19,4 @@ public class BaseTest {
     protected AccountPage accountPage = new AccountPage(driver);
 
 
-    public BaseTest() throws InterruptedException {
-    }
 }

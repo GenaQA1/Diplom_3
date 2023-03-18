@@ -1,13 +1,11 @@
 package page.registrationpage;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import page.basepage.BasePage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.time.Duration;
 
 public class RegistrationPage extends BasePage {
     public RegistrationPage(WebDriver driver) {

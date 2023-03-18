@@ -1,6 +1,5 @@
 package page.loginpage;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.basepage.BasePage;
@@ -10,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
-import static staticvalues.StaticValues.URL_PAGE_LOGIN;
+import static urls.URLs.URL_PAGE_LOGIN;
 
 public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
@@ -33,7 +32,7 @@ public class LoginPage extends BasePage {
     }
 
     public void sendTextFieldEmail(String Email) throws InterruptedException {
-        Thread.sleep(500);
+        checkExitAccount();
         driver.findElement(fieldEmail).sendKeys(Email);
     }
 
@@ -43,17 +42,17 @@ public class LoginPage extends BasePage {
     }
 
     public void clickButtonAcceptLogin() throws InterruptedException {
-        Thread.sleep(500);
+
         driver.findElement(buttonAcceptLogin).click();
     }
     public void clickButtonRecoveryPassword() throws InterruptedException {
-        Thread.sleep(500);
+
         driver.findElement(buttonRecoveryPassword).click();
     }
 
     public void checkExitAccount() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.urlContains(URL_PAGE_LOGIN));
         String url = driver.getCurrentUrl();
-        Assert.assertEquals(url, URL_PAGE_LOGIN);
+        Assert.assertEquals(URL_PAGE_LOGIN,url);
     }
 }
