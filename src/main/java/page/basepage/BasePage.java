@@ -1,4 +1,4 @@
-package Page.BasePage;
+package page.basepage;
 
 import org.openqa.selenium.WebDriver;
 
@@ -6,9 +6,8 @@ public class BasePage {
 
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver){
+
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-
     }
-
 }

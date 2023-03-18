@@ -1,30 +1,46 @@
 package toppingconstructortest;
 
 import basetest.BaseTest;
+import io.qameta.allure.junit4.DisplayName;
+import io.restassured.RestAssured;
+import org.junit.Before;
 import org.junit.Test;
+
+import static staticvalues.StaticValues.URL_BASE;
 
 public class ToppingConstructorTest extends BaseTest {
 
-//Обратил внимание что переключатели активируются еще и отображении одной категории в видимости. Т.е. если мы видим только соусы то его класс меняется
-    //то можно сказать что система в данном случае отрабатывает правильно. Сложно зацепиться за что-то в этом задании. Хотел проверить на нажатие,но происходит скролл а его убрать нельзя.
+    public ToppingConstructorTest() throws InterruptedException {
+    }
+
+
+    @Before
+    public void setUp(){
+        driver.get(URL_BASE);
+    }
+
+
     @Test
+    @DisplayName("Check that the transitions to the sections 'Sauces'")
+    public void checkVisibleSauce() throws InterruptedException {
+        homePage.clickButtonToppingSauce();
+        homePage.checkToppingSauce();
+    }
+
+
+    @Test
+    @DisplayName("Check that the transitions to the sections 'Bun'")
     public void checkVisibleBun() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site");
+        homePage.clickButtonToppinFillings();
         homePage.clickButtonToppingBun();
         homePage.checkToppingBun();
     }
 
-    @Test
-    public void checkVisibleSauce() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site");
-        homePage.clickButtonToppinFillings();
-        homePage.checkToppingSauce();
-    }
 
     @Test
+    @DisplayName("Check that the transitions to the sections 'Fillings'")
     public void checkVisibleFillings() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site");
-        homePage.clickButtonToppingBun();
+        homePage.clickButtonToppinFillings();
         homePage.checkToppingFillings();
     }
 }

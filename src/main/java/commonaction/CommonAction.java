@@ -1,4 +1,4 @@
-package CommonAction;
+package commonaction;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class CommonAction {
 
@@ -23,10 +22,10 @@ public class CommonAction {
     @Before
     public static WebDriver createDriver(String browser) {
         if (driver == null) {
-            if (browser == "mac_chrome") {
+            if (browser.equals("mac_chrome")) {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
                 driver = new ChromeDriver();
-            } else if (browser == "mac_yandex") {
+            } else if (browser.equals("mac_yandex")) {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/yandex");
                ChromeOptions options = new ChromeOptions();
                options.setBinary("/Applications/Yandex.app/Contents/MacOS/Yandex");
@@ -35,7 +34,7 @@ public class CommonAction {
                 Assert.fail("Incorrect platform or browser name: " + browser);
             }
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
+           driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT));
         }
         return driver;
     }

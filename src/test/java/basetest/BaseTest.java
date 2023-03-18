@@ -1,12 +1,11 @@
 package basetest;
 
-import CommonAction.CommonAction;
-import Page.AccountPage.AccountPage;
-import Page.HomePage.HomePage;
-import Page.LoginPage.LoginPage;
-import Page.RecoveryPasswordPage.RecoveryPasswordPage;
-import Page.RegistrationPage.RegistrationPage;
-import org.junit.After;
+import commonaction.CommonAction;
+import page.accountpage.AccountPage;
+import page.homepage.HomePage;
+import page.loginpage.LoginPage;
+import page.recoverypasswordpage.RecoveryPasswordPage;
+import page.registrationpage.RegistrationPage;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
@@ -19,4 +18,7 @@ public class BaseTest {
     protected RecoveryPasswordPage recoveryPasswordPage = new RecoveryPasswordPage(driver);
     protected AccountPage accountPage = new AccountPage(driver);
 
+
+    public BaseTest() throws InterruptedException {
+    }
 }
