@@ -22,13 +22,12 @@ public class AuthorizationTest extends BaseTest {
     public void setUp(){
         driver.get(URL_BASE);
         RestAssured.baseURI = URL_BASE;
-        createUser.userClient(createUser.getCorrectUser());
+        createUser.createUser(createUser.getCorrectUser());
     }
 
     @After
     public void setDown(){
         createUser.deleteUser(authUser.authUser(createUser.getCorrectUser()));
-        createUser.deleteUser(authUser.authUser(createUser.getIncorrectUserPassword()));
     }
 
 
@@ -36,8 +35,8 @@ public class AuthorizationTest extends BaseTest {
     @DisplayName("log in using the 'Log in to account' button on the main page")
     public void authorizationByButtonAccountUserPageHome() throws InterruptedException {
         homePage.clickButtonAccountUser();
-        loginPage.sendTextFieldEmail("gena.chebotar@mail.ru");
-        loginPage.sendTextFieldPassword("GoLittleRockStar");
+        loginPage.sendTextFieldEmail(EMAIL_USER);
+        loginPage.sendTextFieldPassword(PASSWORD_USER);
         loginPage.clickButtonAcceptLogin();
         homePage.checkButtonCreateOrder();
         homePage.clickButtonAccountUser();

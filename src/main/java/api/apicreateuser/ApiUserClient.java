@@ -4,10 +4,14 @@ import api.userprofile.UserProfile;
 import io.restassured.response.Response;
 import urls.URLs;
 
+import static datauser.DataUser.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class ApiUserClient {
+
+    UserProfile correctUser = new UserProfile(EMAIL_USER, PASSWORD_USER,NAME_USER);
+    UserProfile incorrectUserPassword = new UserProfile(EMAIL_USER, INCORRECT_PASSWORD_USER, NAME_USER);
 
 
     public UserProfile getCorrectUser() {
@@ -18,10 +22,7 @@ public class ApiUserClient {
         return incorrectUserPassword;
     }
 
-    UserProfile correctUser = new UserProfile("gena.chebotar@mail.ru", "GoLittleRockStar", "MusicApple1");
-    UserProfile incorrectUserPassword = new UserProfile("gena.chebotar@mail.ru", "12345", "MusicApple1");
-
-    public Response userClient(UserProfile userProfile) {
+    public Response createUser(UserProfile userProfile) {
         Response response = given()
                 .header("Content-type", "application/json")
                 .body(userProfile)

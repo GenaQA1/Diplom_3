@@ -22,13 +22,12 @@ public class TransitionPageTest extends BaseTest {
     public void setUp(){
         driver.get(URL_BASE);
         RestAssured.baseURI = URL_BASE;
-        createUser.userClient(createUser.getCorrectUser());
+        createUser.createUser(createUser.getCorrectUser());
     }
 
     @After
     public void setDown(){
         createUser.deleteUser(authUser.authUser(createUser.getCorrectUser()));
-        createUser.deleteUser(authUser.authUser(createUser.getIncorrectUserPassword()));
     }
 
     @Test
